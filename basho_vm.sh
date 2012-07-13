@@ -25,7 +25,7 @@ ROOTSIZE=5120
 SWAPSIZE=1024
 VERBOSITY="--quiet"
 
-while getopts "hd:n:c:m:n:r:s" OPTION
+while getopts "hdn:c:m:n:r:s" OPTION
 do
   case $OPTION in
     h)
@@ -107,6 +107,7 @@ then
   $SQLITE "UPDATE ips SET name='$NAME', status='in-use' WHERE ip='$IP'"
 
   echo "Starting VM..."
+  virsh autostart $NAME
   virsh start $NAME
 
   echo "VM creation complete."
