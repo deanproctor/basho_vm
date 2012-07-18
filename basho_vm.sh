@@ -27,7 +27,7 @@ ROOTSIZE=5120
 SWAPSIZE=1024
 VERBOSITY="--quiet"
 
-while getopts "hdn:c:i:m:n:r:s" OPTION
+while getopts "hdn:c:i:m:n:r:s:" OPTION
 do
   case $OPTION in
     h)
