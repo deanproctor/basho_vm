@@ -107,7 +107,20 @@ ubuntu-vm-builder kvm -o --tmpfs - --suite=precise --flavour=virtual --arch=amd6
 
 if [ $? -eq 0 ]
 then
+  echo
+  echo "Setting DNS..."
+  unset LANG
+  nsupdate -k /var/basho/dns/devops.private << _ACEOF
+server ns1.bos1
+zone bos1
+update delete ${NAME}. A
+update add ${NAME}. 7200 A $IP
+send
+_ACEOF
+
+  echo
   echo "Starting VM..."
+  echo
   virsh autostart $NAME
   virsh start $NAME
 
