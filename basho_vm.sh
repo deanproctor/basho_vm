@@ -68,6 +68,8 @@ then
   exit 1
 fi
 
+NAME=$(echo $NAME | cut -f1 -d '.').bos1
+
 IMAGE_DIR=/var/lib/libvirt/images/$NAME
 
 echo "Destroying previous environment named ${NAME}"
@@ -94,7 +96,7 @@ echo "Creating VM..."
 echo
 
 ubuntu-vm-builder kvm -o --tmpfs - --suite=precise --flavour=virtual --arch=amd64 --components=main,universe \
-	--hostname=${NAME}.bos1 --mem=${MEM} --cpus=${CPU} \
+	--hostname=${NAME} --mem=${MEM} --cpus=${CPU} \
         --dest ${IMAGE_DIR} --rootsize=${ROOTSIZE} --swapsize=${SWAPSIZE} \
 	--ip=${IP} --bridge=br0 --mask=255.255.248.0 --gw=10.0.27.1 --bcast=10.0.31.255 --net=10.0.27.0/21 --dns=10.0.27.102 --domain=bos1 \
 	--addpkg=openssh-server --addpkg=acpid --addpkg=sysstat --addpkg=opscode-keyring --addpkg=chef \
