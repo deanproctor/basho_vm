@@ -1,0 +1,4 @@
+/usr/local/share/kvm/files/ttyS0 /etc/event.d/ttyS0
+/usr/local/share/kvm/files/ttyS0.conf /etc/init/ttyS0.conf
+/usr/local/share/kvm/files/resolv.conf /etc/resolv.conf
+/usr/local/share/kvm/files/validation.pem /etc/chef/validation.pem
