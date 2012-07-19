@@ -19,5 +19,3 @@ dpkg-reconfigure -u chef
 
 # do a first chef-client run
 /usr/bin/chef-client 2>&1 | /usr/bin/tee /root/chef-firstboot.log
-
-rm -f /etc/chef/validation.pem
